@@ -1,20 +1,17 @@
 package myapp.cadastros;
 
-public class Empresa extends Cadastro {
+public class Empresa{
 
-    private String cpfCnpj;
-    private String endereco;
     private Long im;
     private Long ie;
     private Cadastro cadastroEmp;
 
-    public String getCpfCnpj() {
-        return this.cpfCnpj;
+
+    public Empresa(Long im, Long ie) {
+        this.im = im;
+        this.ie = ie;
     }
 
-    public void setCpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
-    }
 
     public Long getIm() {
         return this.im;
@@ -32,17 +29,7 @@ public class Empresa extends Cadastro {
         this.ie = ie;
     }
 
-
-    public String getEndereco() {
-        return this.endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-
-    public Cadastro getCadastroEmp() {
+   public Cadastro getCadastroEmp() {
         return this.cadastroEmp;
     }
 

@@ -5,7 +5,7 @@ public class Cadastro extends Endereco {
     private String nome;
     private Long telefone;
     private String email;
-    
+    private String cpfCnpj;
 
     public Integer getId() {
         return this.id;
@@ -37,6 +37,14 @@ public class Cadastro extends Endereco {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getCpfCnpj() {
+        return this.cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
 

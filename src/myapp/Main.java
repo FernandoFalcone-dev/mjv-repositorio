@@ -5,10 +5,12 @@ import java.util.List;
 
 import myapp.cadastros.CD;
 import myapp.cadastros.Cadastro;
+import myapp.cadastros.Empresa;
 import myapp.cadastros.Livro;
 import myapp.factory.FabricaCadastro;
 import myapp.pedido.Pedido;
 import myapp.pedido.PedidoItem;
+import myapp.printerApp.PrinterApp;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -32,6 +34,7 @@ public class Main {
         cd2.setValorUnidade(155.99);
 
         artista = FabricaCadastro.criarCadastro("William P. Young", "william@yahoo.com", 652314786L);
+
         Livro liv1 = new Livro();
         liv1.setEditora(artista);
         liv1.setCodigoBarras("sfs68s16516851");
@@ -39,7 +42,20 @@ public class Main {
         liv1.setTitulo("A cabana");
         liv1.setValorUnidade(25.0);
 
+        Empresa empresa = new Empresa(849847l, 785421l);
+		Cadastro cadEmpresa = new Cadastro();
+        cadEmpresa.setNome("CAKES MELTE LTDA.");
+		cadEmpresa.setLogradouro("Rua Marques de Pombal");
+        cadEmpresa.setNumero(1476);
+        cadEmpresa.setCidade("Recife");
+        cadEmpresa.setEstado("PE");
+        cadEmpresa.setCpfCnpj("78.652.485/0001-95");
+        cadEmpresa.setEmail("cakesmelte@gmail.com");
+		cadEmpresa.setTelefone(8189567845l);
+        empresa.setCadastroEmp(cadEmpresa);
+
         Pedido pedido = new Pedido();
+        pedido.setEmpresa(empresa);
         Cadastro cliente = FabricaCadastro.criarCadastro("Fred", "fred@gmail.com", 985674321L);
         pedido.setCliente(cliente);
         pedido.setId(65846);
@@ -64,21 +80,14 @@ public class Main {
         itens.add(item);
         pedido.setItens(itens);
         
+
         
-        System.out.println("Pedido Cliente " + pedido.getCliente().getNome());
+       /*  System.out.println("Pedido Cliente " + pedido.getCliente().getNome());
 		for(PedidoItem i: pedido.getItens()) {
 			System.out.println(i.getProduto().getTitulo() + " " + i.getValorUnidade() + " " + i.getQuantidade() + " " + i.getValorTotal());
-		}
-        
-        
-        /*Empresa empresa = new Empresa();
-        empresa.setCpfCnpj("291516518651");
-        empresa.setIe(518648446L);
-        empresa.setIm(161684611L);
-        empresa.setEndereco("Rua Marques de Pombal - 1476 - Recife, PE");
-        empresa.setCadastroEmp(empresa); */
-
-
+		} */
+ 
+        PrinterApp.imprimirPedido(pedido);
 
     }
 }

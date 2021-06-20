@@ -2,12 +2,9 @@ package myapp.cadastros;
 
 public class Endereco {
     private String logradouro;
-    private int numero;
-    private String bairro;
+    private Integer numero;
     private String cidade;
     private String estado;
-    private String complemento;
-
 
     public String getLogradouro() {
         return this.logradouro;
@@ -17,20 +14,12 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return this.numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
-    }
-
-    public String getBairro() {
-        return this.bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getCidade() {
@@ -47,14 +36,6 @@ public class Endereco {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public String getComplemento() {
-        return this.complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
     }
 
 }
