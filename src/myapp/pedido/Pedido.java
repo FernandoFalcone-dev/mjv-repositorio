@@ -1,6 +1,7 @@
 package myapp.pedido;
 
-import java.text.SimpleDateFormat;
+
+import java.util.Date;
 import java.util.List;
 
 import myapp.cadastros.Cadastro;
@@ -8,7 +9,7 @@ import myapp.cadastros.Empresa;
 
 public class Pedido {
     private Integer id;
-    private SimpleDateFormat data;
+    private Date data;
     private Double valorTotal;
     private Cadastro cliente;
     private Integer ccf;
@@ -26,11 +27,12 @@ public class Pedido {
         this.id = id;
     }
 
-    public SimpleDateFormat getData() {
+
+    public Date getData() {
         return this.data;
     }
 
-    public void setData(SimpleDateFormat data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

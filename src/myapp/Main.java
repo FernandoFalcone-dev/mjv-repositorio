@@ -1,6 +1,6 @@
 package myapp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import myapp.cadastros.CD;
@@ -59,8 +59,11 @@ public class Main {
         Cadastro cliente = FabricaCadastro.criarCadastro("Fred", "fred@gmail.com", 985674321L);
         pedido.setCliente(cliente);
         pedido.setId(65846);
-        pedido.setData(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss z"));
+        pedido.setData(new Date(2021,6,20));
         pedido.setValorTotal(230.0);
+        pedido.setCcf(458779);
+        pedido.setCoo(856974
+        );
 
         List<PedidoItem> itens = new ArrayList<>();
         PedidoItem item = new PedidoItem();
@@ -82,7 +85,7 @@ public class Main {
         
 
         
-       /*  System.out.println("Pedido Cliente " + pedido.getCliente().getNome());
+       /*System.out.println("Pedido Cliente " + pedido.getCliente().getNome());
 		for(PedidoItem i: pedido.getItens()) {
 			System.out.println(i.getProduto().getTitulo() + " " + i.getValorUnidade() + " " + i.getQuantidade() + " " + i.getValorTotal());
 		} */
