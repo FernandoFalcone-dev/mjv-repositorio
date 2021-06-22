@@ -1,4 +1,4 @@
-package myapp.printerapp;
+package myapp;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -11,7 +11,7 @@ import myapp.pedido.Pedido;
 import myapp.pedido.PedidoItem;
 
 public class PrinterApp {
-    public static void imprimirPedido(Pedido pedido){
+    public static String imprimirPedido(Pedido pedido){
     
        Empresa empresa = pedido.getEmpresa();
 
@@ -48,9 +48,9 @@ public class PrinterApp {
        }
     
        sb.append("\n----------------------------------------------------------------------\n");
-       sb.append(String.format("TOTAL R$ %.2f", pedido.getValorTotal()));
+       sb.append(String.format("%-60s %.2f", "TOTAL R$", pedido.getValorTotal()));
 
-       System.out.println(sb.toString());
+       return sb.toString();
 }
     
 
