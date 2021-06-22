@@ -1,11 +1,13 @@
 package myapp.cadastros;
 
-public class Cadastro extends Endereco {
+public class Cadastro {
     private Integer id;
     private String nome;
     private Long telefone;
     private String email;
     private String cpfCnpj;
+    
+    private Endereco endereco;
 
     public Integer getId() {
         return this.id;
@@ -46,6 +48,15 @@ public class Cadastro extends Endereco {
     public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
+
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
 
 
 }

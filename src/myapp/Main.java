@@ -6,11 +6,12 @@ import java.util.List;
 import myapp.cadastros.CD;
 import myapp.cadastros.Cadastro;
 import myapp.cadastros.Empresa;
+import myapp.cadastros.Endereco;
 import myapp.cadastros.Livro;
 import myapp.factory.FabricaCadastro;
 import myapp.pedido.Pedido;
 import myapp.pedido.PedidoItem;
-import myapp.printerApp.PrinterApp;
+import myapp.printerapp.PrinterApp;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -42,17 +43,23 @@ public class Main {
         liv1.setTitulo("A cabana");
         liv1.setValorUnidade(25.0);
 
-        Empresa empresa = new Empresa(849847l, 785421l);
+        Empresa empresa = new Empresa(4578123652l, 784512369l);
 		Cadastro cadEmpresa = new Cadastro();
         cadEmpresa.setNome("CAKES MELTE LTDA.");
-		cadEmpresa.setLogradouro("Rua Marques de Pombal");
-        cadEmpresa.setNumero(1476);
-        cadEmpresa.setCidade("Recife");
-        cadEmpresa.setEstado("PE");
         cadEmpresa.setCpfCnpj("78.652.485/0001-95");
         cadEmpresa.setEmail("cakesmelte@gmail.com");
 		cadEmpresa.setTelefone(8189567845l);
         empresa.setCadastroEmp(cadEmpresa);
+
+        Endereco endereco = new Endereco();
+        endereco.setLogradouro("Rua Marques de Pombal");
+        endereco.setNumero("1476");
+        endereco.setBairro("Aflitos");
+        endereco.setCidade("Recife");
+        endereco.setUf("PE");
+        endereco.setCep("50710100");
+        cadEmpresa.setEndereco(endereco);
+
 
         Pedido pedido = new Pedido();
         pedido.setEmpresa(empresa);
@@ -62,8 +69,7 @@ public class Main {
         pedido.setData(new Date(2021,6,20));
         pedido.setValorTotal(230.0);
         pedido.setCcf(458779);
-        pedido.setCoo(856974
-        );
+        pedido.setCoo(856974);
 
         List<PedidoItem> itens = new ArrayList<>();
         PedidoItem item = new PedidoItem();
@@ -81,15 +87,9 @@ public class Main {
         item.calcularValorTotal();;
 
         itens.add(item);
+
         pedido.setItens(itens);
         
-
-        
-       /*System.out.println("Pedido Cliente " + pedido.getCliente().getNome());
-		for(PedidoItem i: pedido.getItens()) {
-			System.out.println(i.getProduto().getTitulo() + " " + i.getValorUnidade() + " " + i.getQuantidade() + " " + i.getValorTotal());
-		} */
- 
         PrinterApp.imprimirPedido(pedido);
 
     }
