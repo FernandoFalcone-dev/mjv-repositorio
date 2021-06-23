@@ -1,4 +1,4 @@
-# ☕ [PT-BR] Projeto Java representando um sistema comerciário
+# ☕ [PT-BR] Projeto Java representando um sistema comercial
 
 Este é um projeto que tem sido feito durante um treinamento de Java com Spring Boot com o intuito de 
 
