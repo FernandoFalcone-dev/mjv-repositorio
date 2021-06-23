@@ -1,8 +1,5 @@
 package myapp;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +12,7 @@ import myapp.cadastros.Livro;
 import myapp.factory.FabricaCadastro;
 import myapp.pedido.Pedido;
 import myapp.pedido.PedidoItem;
+import myapp.service.CupomService;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -93,27 +91,12 @@ public class Main {
 
         pedido.setItens(itens);
         
-        String conteudo = PrinterApp.imprimirPedido(pedido);
-
-        //Isolar na classe printerapp
-        //verifica se existe cupom
-        File dir = new File("C:\\Users\\ferna\\Documents\\JavaTreinamento\\projeto-um\\src\\myapp");
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        //verifica se existe o arquivo
-        File cupom = new File(dir, "cupom.txt");
-
-        try {
-			cupom.createNewFile();
-			FileWriter arq = new FileWriter(cupom.getPath());
-			PrintWriter gravar = new PrintWriter(arq);
-			
-			gravar.print(conteudo);
-			arq.close();
-			
-		} catch (IOException e) {
+		String conteudo = CupomService.gerarCupom(pedido);
+		 
+		File dir = new File("C:\\Users\\ferna\\Documents\\JavaTreinamento\\mjv-treinamento");
+		try {
+			CupomService.gerarPedidos(dir, "pedidos.txt");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
