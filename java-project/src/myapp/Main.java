@@ -13,6 +13,7 @@ import myapp.factory.FabricaCadastro;
 import myapp.pedido.Pedido;
 import myapp.pedido.PedidoItem;
 import myapp.service.CupomService;
+import myapp.util.PrinterApp;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -92,12 +93,14 @@ public class Main {
         pedido.setItens(itens);
         
 		String conteudo = CupomService.gerarCupom(pedido);
+        
 		 
-		File dir = new File("C:\\Users\\ferna\\Documents\\JavaTreinamento\\mjv-treinamento");
-		try {
-			CupomService.gerarPedidos(dir, "pedidos.txt");
+		File dir = new File("C:\\Users\\ferna\\Documents\\JavaTreinamento\\mjv-treinamento\\cupom");
+		
+        try {
+			PrinterApp.print(conteudo, dir, "cupom.txt");
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
     }
 }

@@ -32,7 +32,7 @@ public class CupomService {
     
     public static String gerarCupom(Pedido pedido){
        
-        final String CUPOM_LINE = "-".repeat(63);        
+        final String CUPOM_LINE = "-".repeat(66);        
 
         Empresa empresa = pedido.getEmpresa();
 
@@ -52,7 +52,7 @@ public class CupomService {
        String dataFormatada = formatador.format(pedido.getData());
 
        //UMA LINHA DATA FORMATADA - CCF (6) DIGITOS - COO (6) DIGITOS
-       sb.append(String.format("%-47s CCF:%06d CCO:%06d \n",  dataFormatada, pedido.getCcf(), pedido.getCoo()));
+       sb.append(String.format("%-43s CCF:%06d CCO:%06d \n",  dataFormatada, pedido.getCcf(), pedido.getCoo()));
        sb.append(String.format("%20s\n", "CUPOM FISCAL"));
        sb.append(String.format("%s %7s %7s %7s %7s %7s %7s %7s\n", "ITEM", "CÓD.", "DESCR.", "QTD.", "UN.", "VL UNIT(R$)", "ST", "VL ITEM(R$)"));
        
@@ -69,10 +69,10 @@ public class CupomService {
        }
     
        sb.append(CUPOM_LINE + "\n");
-       sb.append(String.format("%-60s %.2f", "TOTAL R$", pedido.getValorTotal()));
+       sb.append(String.format("%-57s %.2f", "TOTAL R$", pedido.getValorTotal()));
 
        return sb.toString();
-}
+    }
     
 
 }
