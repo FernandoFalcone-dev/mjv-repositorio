@@ -31,19 +31,22 @@ public class CupomService {
 	}
     
     public static String gerarCupom(Pedido pedido){
-       Empresa empresa = pedido.getEmpresa();
+       
+        final String CUPOM_LINE = "-".repeat(63);        
+
+        Empresa empresa = pedido.getEmpresa();
 
        Endereco e = empresa.getCadastroEmp().getEndereco();
        String cep = e.getCep().toString().replaceAll( ("(\\d{2})(\\d{3})(\\d{3})"), "$1.$2-$3");
 
        StringBuilder sb = new StringBuilder();
-       sb.append("----------------------------------------------------------------------\n");
+       sb.append(CUPOM_LINE + "\n");
        sb.append(String.format("%s .\n", empresa.getCadastroEmp().getNome()));
        sb.append(String.format("%s, %s, %s - %s - %s Cep: %s\n", e.getLogradouro(), e.getNumero(), e.getBairro(), e.getCidade(), e.getUf(), cep));
        sb.append(String.format("CNPJ: %s\n", empresa.getCadastroEmp().getCpfCnpj()));
        sb.append(String.format("IE: %s\nIM: %s\n",empresa.getIe().toString().replaceAll( ("(\\d{3})(\\d{3})(\\d{3})"), "$1.$2.$3"), 
 				empresa.getIm().toString().replaceAll( ("(\\d{2})(\\d{3})(\\d{3})"), "$1.$2.$3")));
-       sb.append("----------------------------------------------------------------------\n");
+       sb.append(CUPOM_LINE + "\n");
 
        DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()); 
        String dataFormatada = formatador.format(pedido.getData());
@@ -65,7 +68,7 @@ public class CupomService {
 
        }
     
-       sb.append("\n----------------------------------------------------------------------\n");
+       sb.append(CUPOM_LINE + "\n");
        sb.append(String.format("%-60s %.2f", "TOTAL R$", pedido.getValorTotal()));
 
        return sb.toString();
