@@ -28,8 +28,16 @@ public class CadastroDao {
 		}
 	}
 	//IMPLEMENTAR
-	public void alterar() {
-		
+	public void alterar(Cadastro cadastro) {
+		try {
+			String sql= "UPDATE cadastro (nome,telefone) VALUES (?,?);";
+			PreparedStatement st = cnn.prepareStatement(sql);
+			st.setString(1, cadastro.getNome());
+			st.setLong(2, cadastro.getTelefone());
+			st.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public void excluir() {
 		
