@@ -1,7 +1,9 @@
 package com.fernando.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fernando.conection.FabricaConexao;
@@ -55,12 +57,12 @@ public class CadastroDao {
 			e.printStackTrace();
 		}
 	}
-	/*public void excluir() {
+	public void excluir(Tab_cliente tab_cliente) {
 		try {
 					
-			String sql= "DELETE tab_cadastro WHERE id = ? ";
+			String sql= "DELETE FROM tab_cliente WHERE codigo = ? ";
 			PreparedStatement st = cnn.prepareStatement(sql);
-			st.setInt(1, id);
+			st.setInt(1, tab_cliente.getCodigo());
 			st.executeUpdate();
 			st.close();
 			
@@ -68,19 +70,31 @@ public class CadastroDao {
 			e.printStackTrace();
 		}
 	}
-	public List<Cadastro> listar() {
-		List<Cadastro> lista = new ArrayList<Cadastro>();
+	public List<Tab_cliente> listar() {
+		List<Tab_cliente> lista = new ArrayList<Tab_cliente>();
 		try {
-			String sql= "SELECT * FROM tab_cadastro";
+			String sql= "SELECT * FROM tab_cliente";
 			
 			PreparedStatement st = cnn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				Cadastro c = new Cadastro();
-				c.setId(rs.getInt("id"));
-				c.setNome(rs.getString("nome"));
-				c.setTelefone(rs.getLong("telefone"));
-				lista.add(c);
+				Tab_cliente cliente = new Tab_cliente();
+				cliente.setCodigo(rs.getInt("codigo"));
+				cliente.setPf_pj(rs.getString("pf_pj"));
+				cliente.setRazao_social_nome(rs.getString("razao_social_nome"));
+				cliente.setCpf_cnpj(rs.getString("cpf_cnpj"));
+				cliente.setTelefone1(rs.getLong("telefone1"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setAtividade_prof(rs.getString("atividade_prof"));
+				cliente.setCep(rs.getString("cep"));
+				cliente.setEstado(rs.getString("estado"));
+				cliente.setCidade(rs.getString("cidade"));
+				cliente.setRua(rs.getString("rua"));
+				cliente.setRua(rs.getString("numero"));
+				cliente.setComplemento(rs.getString("complemento"));
+				cliente.setBairro(rs.getString("bairro"));
+				cliente.setSite_instagram("site_instagram");
+				lista.add(cliente);
 			}
 			
 			st.close();
@@ -90,15 +104,15 @@ public class CadastroDao {
 		}
 		return lista;
 	}
-	public Cadastro buscar() {
-		Cadastro c = null;
+	public Tab_cliente buscar() {
+		Tab_cliente c = null;
 		try {
-			String sql= "SELECT * FROM tab_cadastro WHERE id = ?";
+			String sql= "SELECT * FROM tab_cliente WHERE codigo = ?";
 			PreparedStatement st = cnn.prepareStatement(sql);
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				c = new Cadastro();
+				c = new Tab_cliente();
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
 				c.setTelefone(rs.getLong("telefone"));
@@ -109,5 +123,5 @@ public class CadastroDao {
 			e.printStackTrace();
 		}
 		return  c; 
-	}*/
+	}
 }

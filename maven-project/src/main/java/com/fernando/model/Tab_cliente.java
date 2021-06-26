@@ -38,8 +38,8 @@ public class Tab_cliente {
         return this.razao_social_nome;
     }
 
-    public void setRazao_social_nome(String razao_social_nome) {
-        this.razao_social_nome = razao_social_nome;
+    public void setRazao_social_nome(String string) {
+        this.razao_social_nome = string;
     }
 
     public String getCpf_cnpj() {
@@ -139,6 +139,5 @@ public class Tab_cliente {
     public void setSite_instagram(String site_instagram) {
         this.site_instagram = site_instagram;
     }
-    
         
 }
