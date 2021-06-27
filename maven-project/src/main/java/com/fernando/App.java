@@ -31,12 +31,11 @@ public class App
 		tab_cliente.setTelefone1(965784236L);
 		dao.alterar(tab_cliente); */
 
-		/* tab_cliente.setCodigo(1);
-		dao.excluir(tab_cliente); */
+		//dao.excluir(1);
 
-		System.out.println(dao.listar()); 
+		//dao.listar(); 
 
-
+		dao.buscar(1);
 		
     }
 }

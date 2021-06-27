@@ -39,30 +39,32 @@ public class CadastroDao {
 			st.setString(14, tab_cliente.getBairro());
 			st.setString(15, tab_cliente.getSite_instagram());
 			st.execute();
+			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	//IMPLEMENTAR
+	
 	public void alterar(Tab_cliente tab_cliente) {
 		try {
 			String sql = "UPDATE tab_cliente "
                 + "SET razao_social_nome = ?, telefone1 = ? "
-                + "WHERE Codigo = 1";
+                + "WHERE Codigo = ?";
 			PreparedStatement st = cnn.prepareStatement(sql);
 			st.setString(1, tab_cliente.getRazao_social_nome());
 			st.setLong(2, tab_cliente.getTelefone1());
+			st.setInt(3, tab_cliente.getCodigo());
 			st.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	public void excluir(Tab_cliente tab_cliente) {
+	public void excluir(Integer codigo) {
 		try {
 					
 			String sql= "DELETE FROM tab_cliente WHERE codigo = ? ";
 			PreparedStatement st = cnn.prepareStatement(sql);
-			st.setInt(1, tab_cliente.getCodigo());
+			st.setInt(1, codigo);
 			st.executeUpdate();
 			st.close();
 			
@@ -96,7 +98,7 @@ public class CadastroDao {
 				cliente.setSite_instagram("site_instagram");
 				lista.add(cliente);
 			}
-			
+
 			st.close();
 			
 		} catch (SQLException e) {
@@ -104,24 +106,24 @@ public class CadastroDao {
 		}
 		return lista;
 	}
-	public Tab_cliente buscar() {
-		Tab_cliente c = null;
+	public Tab_cliente buscar(Integer codigo) {
+		Tab_cliente cliente = null;
 		try {
-			String sql= "SELECT * FROM tab_cliente WHERE codigo = ?";
+			String sql= "SELECT razao_social_nome,email,atividade_prof FROM tab_cliente WHERE codigo = ?";
 			PreparedStatement st = cnn.prepareStatement(sql);
-			st.setInt(1, id);
+			st.setInt(1, codigo);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				c = new Tab_cliente();
-				c.setId(rs.getInt("id"));
-				c.setNome(rs.getString("nome"));
-				c.setTelefone(rs.getLong("telefone"));
+				cliente = new Tab_cliente();
+				cliente.setRazao_social_nome(rs.getString("razao_social_nome"));
+				cliente.setEmail(rs.getString("email"));
+				cliente.setAtividade_prof(rs.getString("atividade_prof"));
 			}
 			
 			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return  c; 
+		return  cliente; 
 	}
 }
