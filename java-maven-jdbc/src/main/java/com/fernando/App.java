@@ -10,7 +10,7 @@ public class App
         CadastroDao dao = new CadastroDao();
 
 		Tab_cliente tab_cliente = new Tab_cliente();
-		/* tab_cliente.setCodigo(1);
+		tab_cliente.setCodigo(1);
 		tab_cliente.setPf_pj("J");
 		tab_cliente.setRazao_social_nome("SUPERMERCADO BOM DIA");
 		tab_cliente.setCpf_cnpj("57896346587921");
@@ -25,7 +25,7 @@ public class App
 		tab_cliente.setComplemento("casa");
 		tab_cliente.setBairro("Maravilha");
 		tab_cliente.setSite_instagram(null);
-		dao.incluir(tab_cliente); */
+		dao.incluir(tab_cliente); 
 		
 		/* tab_cliente.setRazao_social_nome("SUPERMERCADO BOA TARDE");
 		tab_cliente.setTelefone1(965784236L);
@@ -35,7 +35,7 @@ public class App
 
 		//dao.listar(); 
 
-		dao.buscar(1);
+		//dao.buscar(1);
 		
     }
 }

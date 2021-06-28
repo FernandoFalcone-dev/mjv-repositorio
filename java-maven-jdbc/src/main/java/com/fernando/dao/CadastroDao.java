@@ -8,11 +8,15 @@ import java.util.List;
 
 import com.fernando.conection.FabricaConexao;
 import com.fernando.model.Tab_cliente;
+import com.fernando.util.TipoOperacao;
+import com.fernando.util.JDBCUtil;
 
 
 
 public class CadastroDao {
 	private Connection cnn;
+	private final String TABELA = "tab_cliente";
+	private final String CAMPOS[] = {"codigo","pf_pj", "razao_social_nome", "cpf_cnpj", "telefone1", "email", "atividade_prof", "cep", "estado", "cidade", "rua", "numero", "complemento", "bairro", "site_instagram"};
 	
 	public CadastroDao() {
 		FabricaConexao fc = new FabricaConexao();
@@ -20,7 +24,7 @@ public class CadastroDao {
 	}
 	public void incluir(Tab_cliente tab_cliente) {
 		try {
-			String sql= "INSERT INTO tab_cliente (codigo, pf_pj,razao_social_nome,cpf_cnpj, telefone1,email,atividade_prof,cep,estado,cidade,rua,numero,complemento,bairro,site_instagram) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			String sql= JDBCUtil.insertUpdate(TipoOperacao.INSERT, TABELA, CAMPOS);
 			PreparedStatement st = cnn.prepareStatement(sql);
 			st.setInt(1, tab_cliente.getCodigo());
 			st.setString(2, tab_cliente.getPf_pj());
@@ -39,9 +43,10 @@ public class CadastroDao {
 			st.setString(15, tab_cliente.getSite_instagram());
 			st.execute();
 			st.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void alterar(Tab_cliente tab_cliente) {
@@ -74,7 +79,7 @@ public class CadastroDao {
 	public List<Tab_cliente> listar() {
 		List<Tab_cliente> lista = new ArrayList<Tab_cliente>();
 		try {
-			String sql= "SELECT * FROM tab_cliente";
+			String sql= "SELECT * FROM tab_cliente"; 
 			
 			PreparedStatement st = cnn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
