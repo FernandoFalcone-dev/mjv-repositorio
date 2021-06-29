@@ -13,9 +13,11 @@ public class JDBCUtil {
     }
 
     public static String insert(String table, String ... fields) {
-        StringBuilder sb = new StringBuilder("INSERT INTO ");
-        sb.append(String.join(", ", fields));
-        sb.append("VALUES (");
+        StringJoiner set = new StringJoiner(",", "(", ")");
+        set.add(String.join(", ", fields));
+        StringBuilder sb = new StringBuilder("INSERT INTO " + table + " ");
+        sb.append(set.toString());
+        sb.append(" VALUES (");
         sb.append(String.join(", ", Collections.nCopies(fields.length, "?")));
         sb.append(");");
         return sb.toString();
@@ -25,8 +27,8 @@ public class JDBCUtil {
         StringBuilder sb = new StringBuilder(String.format("UPDATE %s SET ", table));
         StringJoiner set = new StringJoiner(",", "", " = ?");
         set.add(String.join("= ?, ", fields));
-
         sb.append(set.toString());
+        sb.append(String.join(" WHERE %s = ?;", fields));
         return sb.toString();    
     }
 
@@ -39,16 +41,17 @@ public class JDBCUtil {
     }
 
     public static String select(String table) {
-        return String.format("SELECT * FROM", table);
+        return String.format("SELECT * FROM %s", table);
     }
     
     //Testando a classe
     public static void main(String[] args) {
         String tabela = "tab_cliente";
         String campos [] = {"codigo","pf_pj", "razao_social_nome", "cpf_cnpj", "telefone1", "email", "atividade_prof", "cep", "estado", "cidade", "rua", "numero", "complemento", "bairro", "site_instagram"};
-       /*  String insert = insert(tabela, campos);
-        System.out.println(insert); */
+        String insert = insert(tabela, campos);
+        System.out.println(insert);
 
+        System.out.println();
         String update = update(tabela, campos);
         System.out.println(update);
     }

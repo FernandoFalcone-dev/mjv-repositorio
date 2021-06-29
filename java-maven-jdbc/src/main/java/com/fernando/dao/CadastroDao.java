@@ -50,23 +50,12 @@ public class CadastroDao {
 	}
 	
 	public void alterar(Tab_cliente tab_cliente) {
-		try {
-			String sql = "UPDATE tab_cliente "
-                + "SET razao_social_nome = ?, telefone1 = ? "
-                + "WHERE Codigo = ?";
-			PreparedStatement st = cnn.prepareStatement(sql);
-			st.setString(1, tab_cliente.getRazao_social_nome());
-			st.setLong(2, tab_cliente.getTelefone1());
-			st.setInt(3, tab_cliente.getCodigo());
-			st.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		insertUpdate(TipoOperacao.UPDATE, tab_cliente);
 	}
 	public void excluir(Integer codigo) {
 		try {
 					
-			String sql= "DELETE FROM tab_cliente WHERE codigo = ? ";
+			String sql= JDBCUtil.delete(TABELA, "codigo");
 			PreparedStatement st = cnn.prepareStatement(sql);
 			st.setInt(1, codigo);
 			st.executeUpdate();
@@ -79,7 +68,7 @@ public class CadastroDao {
 	public List<Tab_cliente> listar() {
 		List<Tab_cliente> lista = new ArrayList<Tab_cliente>();
 		try {
-			String sql= "SELECT * FROM tab_cliente"; 
+			String sql= JDBCUtil.select(TABELA); 
 			
 			PreparedStatement st = cnn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
@@ -113,7 +102,7 @@ public class CadastroDao {
 	public Tab_cliente buscar(Integer codigo) {
 		Tab_cliente cliente = null;
 		try {
-			String sql= "SELECT razao_social_nome,email,atividade_prof FROM tab_cliente WHERE codigo = ?";
+			String sql= JDBCUtil.selectSpecific(TABELA, "codigo");
 			PreparedStatement st = cnn.prepareStatement(sql);
 			st.setInt(1, codigo);
 			ResultSet rs = st.executeQuery();
@@ -129,5 +118,24 @@ public class CadastroDao {
 			e.printStackTrace();
 		}
 		return  cliente; 
+	}
+
+	private void insertUpdate(TipoOperacao tipo, Tab_cliente tab_cliente) {
+		try {
+			String sql = JDBCUtil.insertUpdate(tipo,TABELA, CAMPOS); 
+			PreparedStatement st = cnn.prepareStatement(sql);
+			
+			st.setString(1, tab_cliente.getRazao_social_nome());
+			st.setLong(2, tab_cliente.getTelefone1());
+			
+			if(tipo==TipoOperacao.UPDATE)
+				st.setInt(3, tab_cliente.getCodigo());
+			
+			st.executeUpdate();
+			st.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

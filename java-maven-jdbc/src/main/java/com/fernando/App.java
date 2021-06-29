@@ -25,8 +25,8 @@ public class App
 		tab_cliente.setComplemento("casa");
 		tab_cliente.setBairro("Maravilha");
 		tab_cliente.setSite_instagram(null);
-		dao.incluir(tab_cliente); 
-		
+		dao.incluir(tab_cliente);
+
 		/* tab_cliente.setRazao_social_nome("SUPERMERCADO BOA TARDE");
 		tab_cliente.setTelefone1(965784236L);
 		dao.alterar(tab_cliente); */
