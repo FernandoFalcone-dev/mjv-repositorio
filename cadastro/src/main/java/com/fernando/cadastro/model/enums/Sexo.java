@@ -1,4 +1,4 @@
-package com.fernando.cadastro.model;
+package com.fernando.cadastro.model.enums;
 
 public enum Sexo {
     F("FEMININO"),
