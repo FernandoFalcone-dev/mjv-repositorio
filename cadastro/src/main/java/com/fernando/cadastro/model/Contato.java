@@ -9,12 +9,16 @@ public class Contato {
     @Id
     @Column(length = 50)
     private String nome;
+
     @Column(length = 15, nullable = false)
     private Long telefone1;
+
     @Column(length = 15)
     private Long telefone2;
+
     @Column(length = 50)
     private String email;
+
     @Column(length = 30)
     private String parentesco;
 

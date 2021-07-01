@@ -1,38 +1,54 @@
 package com.fernando.cadastro.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Cadastro {
     @Id
     @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
+
     @Column(length = 50, nullable = false)
     private String nome;
+
     @Column(length = 14, nullable = false, unique = true)
     private Long cpfCnpj;
+
     @Column(length = 12, nullable = false)
     private Long rg;
+
+    @Enumerated(EnumType.STRING)
     @Column(length = 2, nullable = false)
-    private String sexo;
+    private Sexo sexo;
+
     @Column(length = 5, nullable = false)
     private String nacionalidade;
+
     @Column(nullable = false)
     private LocalDate data_nascimento;
     
     @OneToOne
-    @JoinColumn(name = "cd_endereco")
+    @JoinColumn(name = "cd_endereco", foreignKey = @ForeignKey(name = "fk_endereco"))
     private Endereco endereco;
-    //Reorganizar o mapeamento
-    //private Contato contato;
-
-
+    
+    @OneToMany
+    @JoinColumn(name = "cd_contato", foreignKey = @ForeignKey(name = "fk_contato"))
+    private List<Contato> contatos;
 
     public String getId() {
         return this.id;
@@ -66,13 +82,15 @@ public class Cadastro {
         this.rg = rg;
     }
 
-    public String getSexo() {
+
+    public Sexo getSexo() {
         return this.sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
+    
 
     public String getNacionalidade() {
         return this.nacionalidade;
@@ -90,7 +108,7 @@ public class Cadastro {
         this.data_nascimento = data_nascimento;
     }
 
-   /*  public Endereco getEndereco() {
+    public Endereco getEndereco() {
         return this.endereco;
     }
 
@@ -98,13 +116,12 @@ public class Cadastro {
         this.endereco = endereco;
     }
 
-    public Contato getContato() {
-        return this.contato;
+    public List<Contato> getContatos() {
+        return this.contatos;
     }
 
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    } */
-    
+    public void setContatos(List<Contato> contatos) {
+        this.contatos = contatos;
+    }   
 
 }

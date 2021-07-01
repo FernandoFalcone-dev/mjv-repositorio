@@ -9,16 +9,22 @@ public class Endereco {
     @Id
     @Column(length = 16, nullable = false)
     private String cep;
+
     @Column(length = 50, nullable = false)
-    private String rua;
+    private String logradouro;
+
     @Column(length = 5, nullable = false)
-    private Integer numero;
+    private String numero;
+
     @Column(length = 30)
     private String bairro;
+
     @Column(length = 30)
     private String cidade;
+
     @Column(length = 2)
     private String uf;
+
     @Column(length = 30)
     private String complemento;
 
@@ -31,22 +37,22 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getRua() {
-        return this.rua;
+    public String getLogradouro() {
+        return this.logradouro;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return this.numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
-
+    
     public String getBairro() {
         return this.bairro;
     }
