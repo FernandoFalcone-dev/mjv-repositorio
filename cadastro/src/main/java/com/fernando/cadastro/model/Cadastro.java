@@ -55,5 +55,103 @@ public class Cadastro {
 	
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
+
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getRg() {
+		return this.rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getCpf() {
+		return this.cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Long getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
+
+	public Endereco getEndereco() {
+		return this.endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getNacionalidade() {
+		return this.nacionalidade;
+	}
+
+	public void setNacionalidade(String nacionalidade) {
+		this.nacionalidade = nacionalidade;
+	}
+
+	public LocalDate getDataNascimento() {
+		return this.dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public ContatoEmergencia getContato() {
+		return this.contato;
+	}
+
+	public void setContato(ContatoEmergencia contato) {
+		this.contato = contato;
+	}
+
+	public ContatoEmergencia getContato2() {
+		return this.contato2;
+	}
+
+	public void setContato2(ContatoEmergencia contato2) {
+		this.contato2 = contato2;
+	}
+
+	public Sexo getSexo() {
+		return this.sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
 	
 }

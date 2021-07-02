@@ -18,6 +18,40 @@ public class ContatoEmergencia {
 	private GrauParentesco parentesco;
 	@Column(name =  "ce_telefone",length = 20)
 	private Long telefone;
+
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public GrauParentesco getParentesco() {
+		return this.parentesco;
+	}
+
+	public void setParentesco(GrauParentesco parentesco) {
+		this.parentesco = parentesco;
+	}
+
+	public Long getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
+
 	
 	
 }

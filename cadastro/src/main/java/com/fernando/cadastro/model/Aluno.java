@@ -1,9 +1,11 @@
 package com.fernando.cadastro.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,12 +28,13 @@ public class Aluno {
 	@Column(length = 3)
 	private AlunoNivel nivel;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cd_cadastro", foreignKey = @ForeignKey(name = "fk_aluno_cadastro"))
 	private Cadastro cadastro;
 
+
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -39,11 +42,19 @@ public class Aluno {
 	}
 
 	public AlunoNivel getNivel() {
-		return nivel;
+		return this.nivel;
 	}
 
 	public void setNivel(AlunoNivel nivel) {
 		this.nivel = nivel;
+	}
+
+	public Cadastro getCadastro() {
+		return this.cadastro;
+	}
+
+	public void setCadastro(Cadastro cadastro) {
+		this.cadastro = cadastro;
 	}
 	
 }
