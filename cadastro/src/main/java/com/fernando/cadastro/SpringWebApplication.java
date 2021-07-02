@@ -53,7 +53,7 @@ public class SpringWebApplication {
 			a.setCadastro(c);
 			
 			dao.save(a);
-		}
+		};
 	}
 
 }
