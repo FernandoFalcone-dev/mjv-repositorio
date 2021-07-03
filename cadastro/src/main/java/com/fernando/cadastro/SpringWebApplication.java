@@ -21,10 +21,10 @@ public class SpringWebApplication {
 	public CommandLineRunner run(CursoRepository repository) throws Exception {
 		return args -> {
 			Curso curso = new Curso();
-			curso.setCargaHoraria(120);
-			curso.setNivel(Nivel.AV);
-			curso.setNome("Java");
-			//repository.save(curso);
+			curso.setCargaHoraria(80);
+			curso.setNivel(Nivel.BA);
+			curso.setNome("HTML");
+			repository.save(curso);
 
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(curso);
