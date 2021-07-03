@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fernando.cadastro.model.enums.AlunoNivel;
+import com.fernando.cadastro.model.enums.Nivel;
 
 
 @Entity
@@ -26,7 +26,7 @@ public class Aluno {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 3)
-	private AlunoNivel nivel;
+	private Nivel nivel;
 	
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cd_cadastro", foreignKey = @ForeignKey(name = "fk_aluno_cadastro"))
@@ -37,15 +37,11 @@ public class Aluno {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public AlunoNivel getNivel() {
+	public Nivel getNivel() {
 		return this.nivel;
 	}
 
-	public void setNivel(AlunoNivel nivel) {
+	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
 

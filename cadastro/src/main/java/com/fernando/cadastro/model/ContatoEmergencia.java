@@ -19,7 +19,6 @@ public class ContatoEmergencia {
 	@Column(name =  "ce_telefone",length = 20)
 	private Long telefone;
 
-
 	public String getNome() {
 		return this.nome;
 	}

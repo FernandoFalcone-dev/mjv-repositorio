@@ -61,10 +61,6 @@ public class Cadastro {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getNome() {
 		return this.nome;
 	}

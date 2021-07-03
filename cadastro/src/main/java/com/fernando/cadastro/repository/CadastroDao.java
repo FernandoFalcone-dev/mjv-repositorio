@@ -30,4 +30,8 @@ public class CadastroDao {
         query.setParameter("abc", nome);
         return query.getResultList();
     }
+    public List<Cadastro> listAll(){
+		Query query = em.createQuery("SELECT e FROM Cadastro e");
+		return query.getResultList();
+	}
 }
