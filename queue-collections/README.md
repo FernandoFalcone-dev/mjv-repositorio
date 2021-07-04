@@ -15,7 +15,7 @@ Esta interface *extends* da interface Collection e é herdada pela interface Deq
 
 #### :warning: Obs.: A partirr do Java 1.5, com a entrada dos Genéricos, é possível restringir o tipo de objeto que será armazendado na Fila (PriorityQueue) 
 
-## Métodos Úteis :top:
+## Métodos Úteis :exclamation::heavy_exclamation_mark:
 
 - Insert:
     - **add(e)**: Insere o elemento especificado nesta fila se for possível fazê-lo imediatamente sem violar as restrições de capacidade, retornando true em caso de sucesso e lançando um IllegalStateException se não houver espaço disponível no momento.
@@ -87,7 +87,7 @@ Esta interface *extends* da interface Collection e é herdada pela interface Deq
     import java.util.LinkedList;
     import java.util.Queue;
 
-    public class QueueRemoveExample {
+    public class QueueExamineExample {
         public static void main(String[] args) throws Exception {
 
                 Queue<Integer> queue = new LinkedList<>();
@@ -122,3 +122,11 @@ Esta interface *extends* da interface Collection e é herdada pela interface Deq
 ## Outros métodos
 - Herdados da Interface ***java.util.Collection***: addAll, clear, contains, containsAll, equals, hashCode, isEmpty, iterator, parallelStream, remove, removeAll, removeIf, retainAll, size, spliterator, stream, toArray, toArray
 - Herdados da interface ***java.lang.Iterable***: forEach
+
+## Fontes:
+- [GeeksForGeeks](https://www.geeksforgeeks.org/queue-interface-java/)
+- [Oracle Docs](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#element--)
+- [Baeldung](https://www.baeldung.com/java-queue)
+
+### Indicação:
+- [Loiane Groner - Estrutura de Dados: Queue](https://www.youtube.com/watch?v=gtSoQs7TSnQ&t=265s)
