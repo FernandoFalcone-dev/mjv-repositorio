@@ -1,9 +1,17 @@
 package com.fernando.cadastro.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.fernando.cadastro.model.Curso;
 import com.fernando.cadastro.repository.CursoRepository;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +30,17 @@ public class CursoController {
     private CursoRepository repository;
 
     @GetMapping
-    public Iterable<Curso> listar(){
-        return repository.findAll();
+    public ResponseEntity<List<Curso>> listar(){
+        List<Curso> cursosList = repository.findAll();
+        if (cursosList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            for (Curso curso : cursosList) {
+                Integer id = curso.getId();
+                curso.add(linkTo(methodOn(CursoController.class).buscarProduto(id)).withSelfRel());
+            }
+            return new ResponseEntity<List<Curso>>(cursosList, HttpStatus.OK);
+        }     
     }
 
     @PostMapping()
@@ -52,8 +69,14 @@ public class CursoController {
     }
 
     @GetMapping(value = "/{id}")
-    public Curso buscar(@PathVariable("id") Integer id) {
-        return repository.findById(id).orElse(null);
+    public ResponseEntity<Curso> buscarProduto(@PathVariable(value = "id") Integer id) {
+        Optional<Curso> cursoEspecifico = repository.findById(id);
+        if (!cursoEspecifico.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            cursoEspecifico.get().add(linkTo(methodOn(CursoController.class).listar()).withRel("Lista de Cursos"));
+            return new ResponseEntity<Curso>(cursoEspecifico.get(), HttpStatus.OK);
+        }
     }
     
 }

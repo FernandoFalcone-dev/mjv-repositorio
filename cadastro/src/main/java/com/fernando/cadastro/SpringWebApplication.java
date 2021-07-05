@@ -24,12 +24,12 @@ public class SpringWebApplication {
 			curso.setCargaHoraria(80);
 			curso.setNivel(Nivel.BA);
 			curso.setNome("HTML");
-			repository.save(curso);
+			//repository.save(curso);
 
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(curso);
 			System.out.println(json);
 		};
-	} 
+	}  
 
 }

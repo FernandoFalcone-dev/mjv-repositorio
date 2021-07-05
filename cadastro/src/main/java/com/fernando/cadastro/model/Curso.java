@@ -10,9 +10,11 @@ import javax.persistence.Table;
 
 import com.fernando.cadastro.model.enums.Nivel;
 
+import org.springframework.hateoas.RepresentationModel;
+
 @Entity
 @Table(name = "tab_curso")
-public class Curso {
+public class Curso extends RepresentationModel<Curso> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
