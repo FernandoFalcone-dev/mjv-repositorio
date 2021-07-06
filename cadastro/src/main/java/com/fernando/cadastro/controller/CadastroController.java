@@ -1,6 +1,5 @@
 package com.fernando.cadastro.controller;
 
-import java.util.List;
 
 import com.fernando.cadastro.exceptions.RegistroNaoLocalizadoException;
 import com.fernando.cadastro.model.Cadastro;

@@ -17,7 +17,7 @@ public class SpringWebApplication {
 		SpringApplication.run(SpringWebApplication.class, args);
 	}
 
-	@Bean
+	/* @Bean
 	public CommandLineRunner run(CursoRepository repository) throws Exception {
 		return args -> {
 			Curso curso = new Curso();
@@ -30,6 +30,6 @@ public class SpringWebApplication {
 			String json = mapper.writeValueAsString(curso);
 			System.out.println(json);
 		};
-	}  
+	}    */
 
 }
