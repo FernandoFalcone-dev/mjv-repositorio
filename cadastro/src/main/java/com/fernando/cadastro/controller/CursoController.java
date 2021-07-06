@@ -6,8 +6,8 @@ import java.util.Optional;
 import com.fernando.cadastro.model.Curso;
 import com.fernando.cadastro.repository.CursoRepository;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+/* import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn; */
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,10 +35,10 @@ public class CursoController {
         if (cursosList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            for (Curso curso : cursosList) {
-                Integer id = curso.getId();
-                curso.add(linkTo(methodOn(CursoController.class).buscarProduto(id)).withSelfRel());
-            }
+            /* for (Curso curso : cursosList) {
+               Integer id = curso.getId();
+               curso.add(linkTo(methodOn(CursoController.class).buscarProduto(id)).withSelfRel());
+            } */
             return new ResponseEntity<List<Curso>>(cursosList, HttpStatus.OK);
         }     
     }
@@ -48,10 +48,10 @@ public class CursoController {
         repository.save(curso);
     }
 
-    @PutMapping()
-    public void alterar(@RequestBody Curso curso){
-        repository.save(curso);
-    }
+	@PutMapping()
+	public void alterar(@RequestBody Curso curso){
+		repository.save(curso);
+	}
 
     @GetMapping(value="/filter/{nome}")
     public Iterable<Curso> listar(@PathVariable("nome") String nome) {
@@ -74,7 +74,7 @@ public class CursoController {
         if (!cursoEspecifico.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            cursoEspecifico.get().add(linkTo(methodOn(CursoController.class).listar()).withRel("Lista de Cursos"));
+            /* cursoEspecifico.get().add(linkTo(methodOn(CursoController.class).listar()).withRel("Lista de Cursos")); */
             return new ResponseEntity<Curso>(cursoEspecifico.get(), HttpStatus.OK);
         }
     }
