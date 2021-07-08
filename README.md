@@ -16,10 +16,11 @@ Projeto que representa um sistema se fluxo de compras, com cadastro de produtos 
 - Realizar pedidos
 - Listar pedidos
 - Gerar cupom fiscal
-
+- Salvar no disco
+***
 ## 2º Java Maven JDBC:
 #### Descrição: 
-Projeto de um CRUD completo utilizando JDBC para conectar com banco de dados MySQL
+Projeto de um CRUD completo utilizando JDBC para conectar com banco de dados MySQL. Esta aplicação realiza um cadastro
 
 #### Funcionalidades:
 - Incluir cadastro
@@ -27,6 +28,16 @@ Projeto de um CRUD completo utilizando JDBC para conectar com banco de dados MyS
 - Excluir cadastro
 - Listar cadastros
 - Buscar cadastro
+***
+## 3º Java Maven JDBC:
+#### Descrição: 
+Projeto de um CRUD completo utilizando JDBC para conectar com banco de dados MySQ
 
-
+#### Funcionalidades:
+- Incluir cadastro
+- Alterar cadastro
+- Excluir cadastro
+- Listar cadastros
+- Buscar cadastro
+***
 ### *Status: em produção...*
